@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menghitung Nilai UAS</title>
+
+    <style>
+        .container{   /*label default display block*/
+            border: 1px solid #ddd;
+            display: inline-block;
+            padding: 2em;
+            border-radius: 20px;
+            font-family: Arial, sans-serif;
+            margin: 110px 0px 0px 520px;
+        }
+
+        span{
+            color: #9C1179;
+            font-weight: bold;
+        }
+
+        .container:hover{   /*label default display block*/
+            border: 1px solid #9C1179;
+        }
+
+        .container label{  /*label default display inline*/
+            color: #9C1179;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+
+        .container input[type="number"]{
+            border: none;
+            border-bottom: 1px solid #999;
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 17px;
+            padding: 0.5em 1em 0.5em 0;
+            width: 200px;
+        }
+
+        .container input[type="number"]:focus{
+            border-bottom: 1px solid #9C1179;
+            outline: none;
+        }
+
+        button{
+            background-color: #9C1179;
+            color: #fff;
+            font-size: 15px;
+            margin: auto;
+            letter-spacing: 0.05em;
+            display: block;
+            outline: none;
+            border: none;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        button:hover{
+            background-color: #fff;
+            color: #9C1179;
+            border: 1px solid #9C1179;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 1px 1px 3px #9C1179;
+            /* box-shadow: x y z warna; 
+                x untuk mengatur arah horizontal
+                y untuk mengatur arah vertikal
+                z untuk menentukan keburaman
+                warna untuk menentukan warna
+            */
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="">UTS</label>
+        <input type="number" name="uts" placeholder="masukan nilai UTS" id="uts">
+        <label for="">UAS</label>
+        <input type="number" name="uas" placeholder="masukan nilai UAS" id="uas">
+        <button type="button" id="btn" onclick="hasilAkhir()">Hasil</button>
+        <p>Nilai Akhir Anda Adalah : <span id="output-nilai"></span></p>
+        <p>Anda Mendapatkan Nilai : <span id="output-grade"></span></p>
+    </div>
+        
+    <script>
+        function hasilAkhir() {
+                
+                var uts = Number(document.getElementById('uts').value);
+                var uas = Number(document.getElementById('uas').value);
+                
+                if ((uts < 0 || uts > 100) || (uas < 0 || uas > 100)) {
+                    alert('Input Nilai Tidak Valid');
+                    document.getElementById('output-nilai').innerHTML = "<br><br>Input Nilai Tidak Valid";
+                } else {
+                    var hasil = (uts + uas)/2;
+                    document.getElementById('output-nilai').innerHTML = + hasil;
+                }
+            
+            // perbandingan grade
+            if (hasil <= 100 && hasil >= 85) {
+                document.getElementById('output-grade').innerHTML = "A";
+            }else if (hasil < 85 && hasil >= 70) {
+                document.getElementById('output-grade').innerHTML = "B";
+            }else if (hasil < 70 && hasil >= 60) {
+                document.getElementById('output-grade').innerHTML = "C";
+            }else if (hasil < 60 && hasil >= 55) {
+                document.getElementById('output-grade').innerHTML = "D";
+            }else if (hasil < 55 && hasil >= 0) {
+                document.getElementById('output-grade').innerHTML = "E";
+            }
+        }
+    </script>
+</body>
+</html>
